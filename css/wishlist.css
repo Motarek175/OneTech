@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+:root {
+  --main-color: #09c;
+  --secondary-color: rgba(78, 195, 235, 0.863);
+  --main-padding: 8px 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  margin: auto;
+}
+
+/* start scroll to top */
+.upp {
+  bottom: 15px;
+  right: 15px;
+  background-color: var(--main-color);
+  color: white;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  place-content: center;
+  cursor: pointer;
+  transform: scale(0);
+  transition: all 0.3s ease-in;
+  transform-origin: bottom right;
+  z-index: 10000;
+  box-shadow: 0 0 30px var(--main-color);
+}
+
+.upp i {
+  font-size: 30px;
+}
+/* end scroll to top */
+
+/* start header */
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+header .nav {
+  background-color: var(--main-color);
+}
+
+.nav .container .left {
+  cursor: pointer;
+}
+
+.nav .container .links,
+.nav .container .right .con .collapse .navbar-nav .nav-item .linkss,
+.nav .container .toggleMenu .link .navbar-nav .nav-item .linkss {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 250px;
+  transition: transform 0.3s ease;
+  z-index: 5555555555555;
+  transform: scale(0);
+}
+
+.nav .container .right .con .collapse .navbar-nav .nav-item .linkss,
+.nav .container .toggleMenu .link .navbar-nav .nav-item .linkss {
+  width: 200px;
+}
+
+.nav .container .left:hover > .links,
+.nav .container .right .con .collapse .navbar-nav .nav-item:hover > .linkss,
+.nav .container .toggleMenu .link .navbar-nav .nav-item:hover > .linkss {
+  transform: scale(1);
+}
+
+.nav .container .links ul,
+.nav .container .right .con .collapse .navbar-nav .nav-item .linkss ul,
+.nav .container .toggleMenu .link .navbar-nav .nav-item .linkss {
+  padding: 0;
+  background-color: #fff;
+  box-shadow: 0 5px 20px rgb(0 0 0 / 10%);
+}
+
+.nav .container .links ul li,
+.nav .container .links ul li a,
+.nav .container .right .con .collapse .navbar-nav .nav-item .linkss ul li,
+.nav .container .right .con .collapse .navbar-nav .nav-item .linkss ul li a,
+.nav .container .toggleMenu .link .navbar-nav .nav-item .linkss ul li a {
+  display: block;
+  color: #a3a3a3;
+  line-height: 35px;
+  border-bottom: solid 1px #ededed;
+  transition: color 0.5s;
+}
+
+.nav .container .links ul li a,
+.nav .container .right .con .collapse .navbar-nav .nav-item .linkss ul li a,
+.nav .container .toggleMenu .link .navbar-nav .nav-item .linkss ul li a {
+  padding: var(--main-padding);
+  font-weight: normal;
+  transition: 0.3s ease all;
+}
+
+.nav .container .toggleMenu .link .navbar-nav .nav-item .linkss ul li a {
+  padding: 8px 0;
+}
+
+.nav .container .links ul li a:hover,
+.nav
+  .container
+  .right
+  .con
+  .collapse
+  .navbar-nav
+  .nav-item
+  .linkss
+  ul
+  li
+  a:hover,
+.nav .container .toggleMenu .link .navbar-nav .nav-item .linkss ul li a:hover {
+  color: var(--main-color);
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.nav .container .toggleMenu .link .navbar-nav .nav-item .linkss ul {
+  padding: 0;
+}
+
+.nav .container .toggleMenu .link .navbar-nav .nav-item .linkss ul li a {
+  padding: 8px 12px;
+}
+
+.right .con .menu {
+  cursor: pointer;
+}
+
+.nav .toggleMenu {
+  width: calc(100% - 24px);
+  left: 12px;
+  top: 45px;
+  background-color: var(--main-color);
+  padding: 6px 12px;
+  transform: scale(0);
+  transition: all 0.3s ease-in-out;
+  transform-origin: top center;
+}
+
+.nav .toggleMenu.active {
+  transform: scale(1);
+}
+
+.nav .toggleMenu input {
+  padding: 6px 12px;
+}
+/* end header */
+
+/* start newsletter */
+.newsletter .card {
+  box-shadow: 0px 8px 18px 2px #bbb;
+}
+
+.newsletter .container i {
+  color: var(--main-color);
+}
+
+.newsletter .container input {
+  padding: 8px 12px !important;
+}
+
+.newsletter .container button {
+  background-color: var(--main-color);
+  color: white;
+}
+/* end newsletter */
+
+/* start footer */
+.footer .container .row .left a {
+  color: var(--main-color);
+  font-weight: 500;
+}
+
+.footer .container .row .left p {
+  margin: 0;
+}
+
+.footer .container .row .left .pages {
+  display: flex;
+  gap: 10px;
+}
+
+.footer .container .row .left .pages i {
+  background-color: var(--main-color);
+  color: white;
+  font-size: 25px;
+  text-align: center;
+  place-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.footer .container .row .left .pages i:hover {
+  background-color: var(--secondary-color);
+}
+
+.footer .container .row ul li a {
+  color: #a3a3a3;
+  transition: 0.3s ease-in-out all;
+}
+
+.footer .container .row ul li a:hover {
+  color: var(--main-color);
+}
+/* end footer */
+
+/* start copyright */
+.copyright p {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+}
+
+.copyright p span {
+  color: var(--main-color);
+}
+/* end copyright */
