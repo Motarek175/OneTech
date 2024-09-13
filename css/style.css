@@ -132,6 +132,12 @@ header .main .container .row .icon small {
   color: #828282;
 }
 
+@media (max-width: 480px) {
+  header .main .container .row .icon .whishlist {
+    margin-right: 0;
+  }
+}
+
 /* nav */
 header .nav {
   background-color: var(--main-color);
@@ -699,8 +705,7 @@ header .nav {
 }
 
 .bestSeller .container .item .heart {
-  width: 40px;
-  height: 40px;
+  width: fit-content;
   right: 25px;
   top: 10px;
   color: black;
@@ -743,6 +748,12 @@ header .nav {
 
   100% {
     transform: translateX(-80%);
+  }
+}
+
+@media (max-width: 992px) {
+  .brands .container .brand .slide {
+    animation: none;
   }
 }
 /* end brands */
@@ -820,5 +831,3 @@ header .nav {
   color: var(--main-color);
 }
 /* end copyright */
-
-

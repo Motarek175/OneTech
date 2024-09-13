@@ -4,11 +4,6 @@ var up = document.querySelector(".upp");
 var nav = document.querySelector(".nav");
 var menu = document.querySelector(".right .con .menu");
 var togglemenu = document.querySelector(".nav .toggleMenu");
-// details variables
-var details = [];
-var empty = document.querySelector(".empty");
-var detail = document.querySelector(".cart .container .detail");
-
 // scroll to top
 up.addEventListener("click", () => {
   window.scrollTo(0, 0);
@@ -27,14 +22,15 @@ window.onscroll = function () {
   }
 };
 
-// details
-var pros = "";
+var details = [];
+var empty = document.querySelector(".empty");
 var detail = document.querySelector(".cart .container .detail");
-if (JSON.parse(localStorage.getItem("wish"))) {
+if (JSON.parse(localStorage.getItem("wish")) != "") {
   empty.style.display = "none";
   details = JSON.parse(localStorage.getItem("wish"));
+  let pros = "";
   for (let i = 0; i < details.length; i++) {
-    pros += `<div class="row pt-3 justify-content-center align-items-center">
+    pros += `<div class="row pt-3 justify-content-center align-items-center" data-index="${i}">
           <div class="col-4 d-flex gap-2 align-items-center">
             <img src="${details[i].favimg}" alt="">
             <div class="text">
@@ -49,8 +45,29 @@ if (JSON.parse(localStorage.getItem("wish"))) {
             <button class="btn btn-danger remove"><i class="fa-solid fa-heart-crack text-white"></i></button>
           </div>
         </div>`;
-    detail.innerHTML = pros;
   }
+  detail.innerHTML = pros;
 } else {
   empty.style.display = "block";
 }
+
+let buttons = document.querySelectorAll(".btn-danger");
+let wishCount = localStorage.getItem("wishcounter");
+let state = JSON.parse(localStorage.getItem("heartState"));
+
+buttons.forEach((button) => {
+  let index = button.closest(".row").dataset.index;
+  button.addEventListener("click", () => {
+    let id = details[index].favid;
+    state.splice(id, 1);
+    localStorage.setItem("heartState", JSON.stringify(state));
+    details.splice(index, 1);
+    localStorage.setItem("wish", JSON.stringify(details));
+    wishCount--;
+    if (wishCount <= 0) {
+      wishCount = 0;
+    }
+    localStorage.setItem("wishcounter", wishCount);
+    window.location.reload();
+  });
+});

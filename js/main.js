@@ -3,6 +3,7 @@ var up = document.querySelector(".upp");
 up.addEventListener("click", () => {
   window.scrollTo(0, 0);
 });
+
 var nav = document.querySelector(".nav");
 var menu = document.querySelector(".right .con .menu");
 var togglemenu = document.querySelector(".nav .toggleMenu");
@@ -193,16 +194,17 @@ let whishlist = document.querySelector(
 );
 let cartcounter = 0;
 let cartprice = 0;
-let whishlistcounter = 0;
 let card;
 let cardContainer = JSON.parse(localStorage.getItem("Details")) || [];
-let test = document.querySelectorAll(".testbutton");
+let buttons = document.querySelectorAll(".testbutton");
 let testheart = document.querySelectorAll(".testheart");
-let favcontainer = [];
 let btnState = [];
+let heartState = [];
 
 // add and remove from cart
 window.onload = function () {
+  btnState = JSON.parse(localStorage.getItem("State")) || [];
+  cardContainer = JSON.parse(localStorage.getItem("Details")) || [];
   testheart.forEach((heart) => {
     updateHeartState(heart);
   });
@@ -211,21 +213,20 @@ window.onload = function () {
     cartprice = JSON.parse(localStorage.getItem("cartPrice"));
     span.innerHTML = cartcounter;
     pric.innerHTML = `$ ${cartprice}`;
-    test.forEach((button) => {
-      updateButtonState(button);
-    });
   } else {
-    localStorage.setItem("cartCounter", 0);
-    localStorage.setItem("cartPrice", 0);
-    test.forEach((button) => {
-      updateButtonState(button);
-    });
+    cartcounter = 0;
+    cartprice = 0;
+    localStorage.setItem("cartCounter", cartcounter);
+    localStorage.setItem("cartPrice", cartprice);
   }
+  buttons.forEach((button) => {
+    updateButtonState(button);
+  });
 };
 
 function updateButtonState(button) {
-  const state = localStorage.getItem(`${button.id}`);
-  if (state === "1") {
+  let bttnstate = JSON.parse(localStorage.getItem("State")) || [];
+  if (bttnstate.includes(button.id)) {
     button.classList.add("active");
     button.innerHTML = "Remove";
   } else {
@@ -233,42 +234,47 @@ function updateButtonState(button) {
     button.innerHTML = "Add Cart";
   }
 }
-test.forEach((btn) => {
-  updateButtonState(btn);
+
+buttons.forEach((btn) => {
   btn.addEventListener("click", () => {
     btn.classList.toggle("active");
     card = btn.parentNode;
     let cardname = card.querySelector(".text strong")?.textContent;
+    btnState = JSON.parse(localStorage.getItem("State")) || [];
+    let details = {
+      button: card.querySelector("button")?.classList,
+      cardimg: card.querySelector(".img img")?.src,
+      cardprice: card.querySelector(".text small:nth-of-type(1)")?.textContent,
+      cardtype: card.querySelector(".text small:nth-of-type(2)")?.textContent,
+      cardname: cardname,
+      numcards: 1,
+      id: card.querySelector("button").id,
+    };
+    var itemprice = details.cardprice;
+    itemprice = itemprice.replace(/[^0-9.-]+/g, "");
+    var price = parseFloat(itemprice);
     if (btn.classList.contains("active")) {
       localStorage.setItem(`${btn.id}`, "1");
-      btnState.push(`${btn.id}`);
+      if (!btnState.includes(`${btn.id}`)) {
+        btnState.push(`${btn.id}`);
+      }
       btn.innerHTML = "Remove";
-      // start add
+      cardContainer.push(details);
+      // Start add
       cartcounter++;
-      cartprice += 357;
+      cartprice = cartprice + price;
       span.innerHTML = cartcounter;
       pric.innerHTML = `$ ${cartprice}`;
       localStorage.setItem("cartCounter", cartcounter);
       localStorage.setItem("cartPrice", cartprice);
-      // end add
-      let details = {
-        button: card.querySelector("button")?.classList,
-        cardimg: card.querySelector(".img img")?.src,
-        cardprice: card.querySelector(".text small:nth-of-type(1)")
-          ?.textContent,
-        cardtype: card.querySelector(".text small:nth-of-type(2)")?.textContent,
-        cardname: cardname,
-        numcards: 1,
-      };
-      cardContainer.push(details);
       localStorage.setItem("Details", JSON.stringify(cardContainer));
       localStorage.setItem("State", JSON.stringify(btnState));
     } else {
       localStorage.setItem(`${btn.id}`, "0");
       btn.innerHTML = "Add Cart";
-      // start remove
+      // Start remove
       cartcounter--;
-      cartprice -= 357;
+      cartprice = Math.abs(cartprice - price);
       if (cartcounter <= 0) {
         cartprice = 0;
         cartcounter = 0;
@@ -278,32 +284,38 @@ test.forEach((btn) => {
       localStorage.setItem("cartCounter", cartcounter);
       localStorage.setItem("cartPrice", cartprice);
       let index = cardContainer.findIndex((item) => item.cardname === cardname);
+      let btnindex = btnState.indexOf(btn.id);
+      if (btnindex !== -1) btnState.splice(btnindex, 1);
+      localStorage.setItem("State", JSON.stringify(btnState));
       if (index !== -1) {
         cardContainer.splice(index, 1);
-        btnState.splice(index, 1);
         localStorage.setItem("Details", JSON.stringify(cardContainer));
-        localStorage.setItem("State", JSON.stringify(btnState));
       }
     }
-    testt(btn);
+    updateButtonState(btn);
   });
 });
 
 // add and remove from wishlist
-if (JSON.parse(localStorage.getItem("wishcounter"))) {
-  wishcounter = JSON.parse(localStorage.getItem("wishcounter"));
-  whishlist.innerHTML = wishcounter;
-} else {
-  localStorage.setItem("wishcounter", 0);
-}
+// Initialize wishcounter and favcontainer from localStorage
+let wishcounter = localStorage.getItem("wishcounter")
+  ? JSON.parse(localStorage.getItem("wishcounter"))
+  : 0;
+
+let favcontainer = localStorage.getItem("wish")
+  ? JSON.parse(localStorage.getItem("wish"))
+  : [];
+whishlist.innerHTML = wishcounter;
+
 function updateHeartState(heart) {
-  const stat = localStorage.getItem(`heart-${heart.id}`);
-  if (stat === "1") {
+  // const stat = localStorage.getItem(`heart-${heart.id}`);
+  let heartstate = JSON.parse(localStorage.getItem("heartState")) || [];
+  if (heartstate.includes(heart.id)) {
     heart.classList.add("active");
-    heart.style.cssText = "color:red";
+    heart.style.cssText = "color:red; transition: all 0.3s ease-in-out";
   } else {
     heart.classList.remove("active");
-    heart.style.cssText = "color:black";
+    heart.style.cssText = "color:black; transition: all 0.3s ease-in-out";
   }
 }
 
@@ -311,34 +323,50 @@ testheart.forEach((heart) => {
   updateHeartState(heart);
   heart.addEventListener("click", () => {
     heart.classList.toggle("active");
-    wish = heart.parentNode;
+    heartState = JSON.parse(localStorage.getItem("heartState")) || [];
+    let wish = heart.parentNode;
     if (heart.classList.contains("active")) {
       localStorage.setItem(`heart-${heart.id}`, "1");
+      if (!heartState.includes(`${heart.id}`)) {
+        heartState.push(heart.id);
+      }
       heart.style.cssText = "color:red";
-      // start add to wishlist
-      whishlistcounter++;
-      whishlist.innerHTML = whishlistcounter;
-      localStorage.setItem("wishcounter", whishlistcounter);
-      // end add to wishlist
+      // Add to wishlist
+      wishcounter++;
+      whishlist.innerHTML = wishcounter;
+      localStorage.setItem("wishcounter", wishcounter);
       let details = {
         favimg: wish.querySelector(".image img")?.src,
         favprice: wish.querySelector(".text p")?.textContent,
         favtype: wish.querySelector(".text small")?.textContent,
         favname: wish.querySelector(".text a")?.textContent,
+        favid: wish.querySelector(".testheart").id,
       };
       favcontainer.push(details);
       localStorage.setItem("wish", JSON.stringify(favcontainer));
+      localStorage.setItem("heartState", JSON.stringify(heartState));
     } else {
       localStorage.setItem(`heart-${heart.id}`, "0");
       heart.style.cssText = "color:black";
-      // start remove fromt wishlist
-      whishlistcounter--;
-      if (whishlistcounter <= 0) {
-        whishlistcounter = 0;
+      // Remove from wishlist
+      let stateIndex = heartState.indexOf(heart.id);
+      heartState.splice(stateIndex, 1);
+      localStorage.setItem("heartState", JSON.stringify(heartState));
+      wishcounter--;
+      if (wishcounter <= 0) {
+        wishcounter = 0;
       }
-      whishlist.innerHTML = whishlistcounter;
-      localStorage.setItem("wishcounter", whishlistcounter);
-      // end remove fromt wishlist
+      let heartindex = favcontainer.findIndex(
+        (item) => item.favname === wish.querySelector(".text a")?.textContent
+      );
+      if (heartindex !== -1) {
+        favcontainer.splice(heartindex, 1);
+      }
+      localStorage.setItem("wish", JSON.stringify(favcontainer));
+      whishlist.innerHTML = wishcounter;
+      localStorage.setItem("wishcounter", wishcounter);
     }
   });
 });
+
+

@@ -11,6 +11,9 @@ var paynow = document.querySelector(".paynow");
 var detail = document.querySelector(".cart .container .detail");
 var pros = "";
 let total = [];
+let cartcounter = localStorage.getItem("cartCounter");
+let cartprice = localStorage.getItem("cartPrice");
+let state = JSON.parse(localStorage.getItem("State"));
 
 // scroll to top
 up.addEventListener("click", () => {
@@ -84,7 +87,7 @@ function display() {
     document.querySelectorAll(".remove").forEach((button) => {
       button.addEventListener("click", function () {
         let index = this.closest(".row").dataset.index;
-        removeItem(index);
+        removeItem(index, price);
       });
     });
   }
@@ -109,15 +112,15 @@ function editCount(edit, i) {
   }
 }
 
-function removeItem(index) {
-  let cartcounter = localStorage.getItem("cartCounter");
-  let cartprice = localStorage.getItem("cartPrice");
+function removeItem(index, price) {
   cartcounter--;
-  cartprice -= 357;
+  cartprice = cartprice - price;
   details.splice(index, 1);
+  state.splice(index, 1);
   localStorage.setItem("Details", JSON.stringify(details));
   localStorage.setItem("cartCounter", cartcounter);
   localStorage.setItem("cartPrice", cartprice);
+  localStorage.setItem("State", JSON.stringify(state));
   display();
   window.location.reload();
 }
