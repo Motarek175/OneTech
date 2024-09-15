@@ -1,20 +1,29 @@
 // toggle menu + scroll to top
-var up = document.querySelector(".upp");
+let up = document.querySelector(".upp");
 // header variables
-var nav = document.querySelector(".nav");
-var menu = document.querySelector(".right .con .menu");
-var togglemenu = document.querySelector(".nav .toggleMenu");
+let nav = document.querySelector(".nav");
+let menu = document.querySelector(".right .con .menu");
+let togglemenu = document.querySelector(".nav .toggleMenu");
 // details variables
-var details = [];
-var empty = document.querySelector(".empty");
-var paynow = document.querySelector(".paynow");
-var detail = document.querySelector(".cart .container .detail");
-var pros = "";
-let total = [];
+let details = [];
+let empty = document.querySelector(".empty");
+let paynow = document.querySelector(".paynow");
+let detail = document.querySelector(".cart .container .detail");
+let pros = "";
+let total = document.querySelector(".total");
+let totalPricespan = document.querySelector(".total span");
+let count = 0;
+let totalPrice = 0;
 let cartcounter = localStorage.getItem("cartCounter");
 let cartprice = localStorage.getItem("cartPrice");
 let state = JSON.parse(localStorage.getItem("State"));
-
+// sure
+let sureprice = document.querySelector(".sure .con .header span");
+let sure = document.querySelector(".sure");
+let surecon = document.querySelector(".sure .con");
+let sureX = document.querySelector(".sure .con .header i");
+let sureNot = document.querySelector(".sure .con .buttons .no");
+let sureYes = document.querySelector(".sure .con .buttons .yes");
 // scroll to top
 up.addEventListener("click", () => {
   window.scrollTo(0, 0);
@@ -41,20 +50,24 @@ if (
 ) {
   empty.style.display = "none";
   paynow.style.display = "flex";
+  total.style.display = "block";
   details = JSON.parse(localStorage.getItem("Details"));
   display();
 } else {
   empty.style.display = "block";
   paynow.style.display = "none";
+  total.style.display = "none";
 }
 
 function display() {
   pros = "";
+  let count = 0;
+  let totalPrice = 0;
   for (let i = 0; i < details.length; i++) {
-    var itemprice = details[i].cardprice;
+    let itemprice = details[i].cardprice;
     itemprice = itemprice.replace(/[^0-9.-]+/g, "");
-    var price = parseFloat(itemprice);
-    pros += `<div class="row border-2 border-bottom py-3 justify-content-center align-items-center" data-index="${i}">
+    let price = parseFloat(itemprice);
+    pros += `<div class="row py-3 justify-content-center align-items-center" data-index="${i}">
           <div class="col-4 d-flex gap-2 align-items-center">
             <img src="${details[i].cardimg}" alt="">
             <div class="text">
@@ -77,6 +90,8 @@ function display() {
           </div>
         </div>`;
     detail.innerHTML = pros;
+    count = details[i].numcards * price;
+    totalPrice += count;
     document.querySelectorAll(".edit").forEach((button) => {
       button.addEventListener("click", function () {
         let index = this.closest(".row").dataset.index;
@@ -91,6 +106,9 @@ function display() {
       });
     });
   }
+  // console.log(totalPrice);
+  totalPricespan.innerHTML = `$ ${totalPrice}`;
+  sureprice.innerHTML = `${totalPrice} $`;
 }
 
 function editCount(edit, i) {
@@ -124,3 +142,28 @@ function removeItem(index, price) {
   display();
   window.location.reload();
 }
+
+paynow.addEventListener("click", () => {
+  sure.style.cssText = "display: flex";
+  surecon.style.cssText = "transform: scale(1); ";
+  sureX.style.cssText = "cursor:pointer";
+});
+
+sureX.addEventListener("click", () => {
+  sure.style.cssText = "display: none";
+});
+
+sureNot.addEventListener("click", () => {
+  sure.style.cssText = "display: none";
+});
+
+sureYes.addEventListener("click", () => {
+  sure.style.cssText = "display: none";
+  Swal.fire({
+    title: "Done",
+    icon: "success",
+  }).then(() => {
+    localStorage.clear("Details");
+    window.location.reload();
+  });
+});

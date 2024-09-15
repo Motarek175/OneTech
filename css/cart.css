@@ -182,11 +182,27 @@ header .nav {
 /* end header */
 
 /* cart */
-.cart .container .row button:nth-of-type(1){
-  padding: var( --main-padding);
+.cart .container .row button:nth-of-type(1) {
+  padding: var(--main-padding);
 }
 
-.paynow{
+.detail {
+  box-shadow: 0px 8px 18px 2px #bbb;
+}
+
+.total {
+  box-shadow: 0px 8px 18px 2px #bbb;
+}
+
+.total p {
+  color: #bbb;
+}
+
+.total p span {
+  color: black;
+}
+
+.paynow {
   display: flex;
   justify-content: end;
 }
@@ -264,3 +280,29 @@ header .nav {
   color: var(--main-color);
 }
 /* end copyright */
+
+.sure {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.361);
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.sure .con {
+  transform: scale(0);
+
+  width: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.sure .con .buttons {
+  padding: 12px;
+}

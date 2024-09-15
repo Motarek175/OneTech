@@ -10,6 +10,26 @@
   </head>
 
   <body>
+    <div class="sure">
+      <div class="con">
+        <div
+          class="header p-3 d-flex align-items-center justify-content-between border-1 border-bottom"
+        >
+          <h3 class="m-0 fs-2">Total Price Is: <span></span></h3>
+          <i class="fa-solid fa-xmark fs-2"></i>
+        </div>
+        <div class="body p-3 border-1 border-bottom">
+          <p class="m-0">Are you sure u want to pay?</p>
+        </div>
+        <div
+          class="buttons d-flex gap-2 justify-content-start flex-row-reverse"
+        >
+          <button class="btn yes btn-primary">Yes</button>
+          <button class="btn no btn-secondary">Not Yet</button>
+        </div>
+      </div>
+    </div>
+
     <!-- start scroll to top -->
     <div class="upp position-fixed">
       <i class="fa-solid fa-chevron-up"></i>
@@ -163,8 +183,8 @@
     <!-- Start Cart List -->
     <div class="cart py-5 my-5">
       <div class="container">
-        <h2 class="border-2 border-bottom pb-3 mb-5">Cart List</h2>
-        <div class="row border-2 border-bottom">
+        <h2 class="pb-3 mb-5">Cart List</h2>
+        <div class="row">
           <div class="col-4">
             <h5 class="text-secondary fw-bold">Item Details</h5>
           </div>
@@ -179,6 +199,11 @@
           </div>
         </div>
         <div class="detail"></div>
+        <div class="total my-5 p-5">
+          <p class="mb-0 text-end">
+            Order Total: <span class="ordertot fw-bold"></span>
+          </p>
+        </div>
         <div class="paynow mt-4">
           <button class="btn btn-outline-success">Pay Now</button>
         </div>
@@ -302,6 +327,7 @@
       </div>
     </div>
     <!-- end copyright -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/cart.js" type="module"></script>
   </body>
