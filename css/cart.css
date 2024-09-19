@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
 
 :root {
   --main-color: #09c;
@@ -276,6 +277,9 @@ header .nav {
 }
 
 .copyright p span {
+    font-size: 30px;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
   color: var(--main-color);
 }
 /* end copyright */
