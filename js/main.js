@@ -1,3 +1,11 @@
+// loader
+let loader = document.querySelector(".load");
+document.body.style.overflowY = "hidden";
+window.onload = setInterval(() => {
+  loader.style.cssText = " opacity:0; transition: all 1s linear; z-index:0";
+  document.body.style.overflowY = "auto";
+}, 1000);
+
 // toggle menu + scroll to top
 var up = document.querySelector(".upp");
 up.addEventListener("click", () => {
@@ -13,7 +21,7 @@ menu.addEventListener("click", () => {
 });
 
 window.onscroll = function () {
-  if (window.scrollY > 100) {
+  if (window.scrollY > 113) {
     nav.style.cssText =
       "position: fixed; top:0; left:0; width:100%; z-index:1000";
     up.style.transform = "scale(1)";
@@ -368,5 +376,3 @@ testheart.forEach((heart) => {
     }
   });
 });
-
-
