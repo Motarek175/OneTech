@@ -3,12 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WishList</title>
+    <title>Contact</title>
     <link rel="stylesheet" href="../css/all.min.css" />
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/wishlist.css" />
+    <link rel="stylesheet" href="../css/contact.css" />
   </head>
-
   <body>
     <!-- start scroll to top -->
     <div class="upp position-fixed">
@@ -74,23 +73,21 @@
                           <a href="../Cart/cart.html" class="">Cart</a>
                         </li>
                         <li>
-                          <a href="wishlist.html" class="">WishList </a>
+                          <a href="../whishlist/wishlist.html" class=""
+                            >WishList
+                          </a>
                         </li>
                         <li>
-                          <a href="../Contact/contact.html" class="">Contact</a>
+                          <a href="#" class="#">Contact</a>
                         </li>
                       </ul>
                     </div>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-white" href="../index.html">Blog</a>
+                    <a class="nav-link text-white" href="#">Blog</a>
                   </li>
                   <li class="nav-item">
-                    <a
-                      class="nav-link text-white"
-                      href="../Contact/contact.html"
-                      >Contact</a
-                    >
+                    <a class="nav-link text-white" href="#">Contact</a>
                   </li>
                   <li class="nav-item">
                     <a
@@ -139,26 +136,21 @@
                         <a href="../Cart/cart.html" class="">Cart</a>
                       </li>
                       <li>
-                        <a href="wishlist.html" class="">WishList </a>
+                        <a href="../whishlist/wishlist.html" class=""
+                          >WishList
+                        </a>
                       </li>
                       <li>
-                        <a href="../Contact/contact.html" class="">Contact</a>
+                        <a href="#" class="#">Contact</a>
                       </li>
                     </ul>
                   </div>
                 </li>
                 <li class="nav-item">
-                  <a id="" class="nav-link text-white" href="../index.html"
-                    >Blog</a
-                  >
+                  <a id="" class="nav-link text-white" href="#">Blog</a>
                 </li>
                 <li class="nav-item">
-                  <a
-                    id=""
-                    class="nav-link text-white"
-                    href="../Contact/contact.html"
-                    >Contact</a
-                  >
+                  <a id="" class="nav-link text-white" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
                   <a
@@ -177,42 +169,101 @@
     </header>
     <!-- end header -->
 
-    <!-- Start Cart List -->
-    <div class="cart py-5 my-5">
+    <!-- start info -->
+    <div class="info mt-5 py-5">
       <div class="container">
-        <h2 class="border-2 border-bottom pb-3 mb-5">Wish List</h2>
-        <div class="row border-2 border-bottom pb-4">
-          <div class="col-4">
-            <h5 class="text-secondary fw-bold">Item Details</h5>
+        <div class="row justify-content-center g-4">
+          <div class="col-12 col-lg-4">
+            <div class="item d-flex align-items-center gap-3 p-3">
+              <div class="img">
+                <img src="../imgs/contact1.webp" alt="" />
+              </div>
+              <div class="text d-flex flex-column">
+                <strong>Phone</strong>
+                <small>01050102929</small>
+              </div>
+            </div>
           </div>
-          <div class="col-4">
-            <h5 class="text-secondary fw-bold text-center">Price</h5>
+          <div class="col-12 col-lg-4">
+            <div class="item d-flex align-items-center gap-3 p-3">
+              <div class="img">
+                <img src="../imgs/contact2.webp" alt="" />
+              </div>
+              <div class="text d-flex flex-column">
+                <strong>Email</strong>
+                <small>mohamedtarek1752003@gmail.com</small>
+              </div>
+            </div>
           </div>
-          <div class="col-4">
-            <h5 class="text-secondary fw-bold text-center">
-              UnWish / <br />
-              Add To Cart
-            </h5>
+          <div class="col-12 col-lg-4">
+            <div class="item d-flex align-items-center gap-3 p-3">
+              <div class="img">
+                <img src="../imgs/contact3.webp" alt="" />
+              </div>
+              <div class="text d-flex flex-column">
+                <strong>Address</strong>
+                <small>Shibin-Al-Qanater, Benha, Qalyubia, EG</small>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="detail"></div>
       </div>
     </div>
-    <!-- end Cart List -->
+    <!-- end info -->
 
-    <!-- start empty -->
-    <div class="empty">
-      <div
-        class="img d-flex justify-content-center flex-column align-items-center"
-      >
-        <img src="../imgs/emptywishlist.svg" alt="" class="w-50" />
-        <h3>No Items In Wish List</h3>
+    <!-- start contact -->
+    <div class="contact py-5">
+      <div class="container">
+        <h2 class="mb-5">Get in Touch</h2>
+        <div class="row justify-content-center g-3">
+          <div class="col-12 col-md-4">
+            <input
+              type="text"
+              class="form-control border-2"
+              placeholder="Name"
+            />
+          </div>
+          <div class="col-12 col-md-4">
+            <input
+              type="email"
+              class="form-control border-2"
+              placeholder="Email"
+            />
+          </div>
+          <div class="col-12 col-md-4">
+            <input
+              type="number"
+              class="form-control border-2"
+              placeholder="Phone"
+            />
+          </div>
+          <div class="col-12 w-100">
+            <textarea
+              placeholder="Message"
+              class="w-100 border-2 form-control"
+              rows="5"
+            ></textarea>
+          </div>
+        </div>
+        <button class="btn">Send Message</button>
       </div>
     </div>
-    <!-- end empty -->
+    <!-- end contact -->
+
+    <!-- start map -->
+    <div class="map pt-5">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d4109.798654942717!2d31.330234382472458!3d30.360989136390796!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sar!2seg!4v1726710438508!5m2!1sar!2seg"
+        height="250"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        class="w-100"
+      ></iframe>
+    </div>
+    <!-- end map -->
 
     <!-- start newsletter -->
-    <div class="newsletter py-5 mt-5">
+    <div class="newsletter py-5">
       <div class="container">
         <div
           class="row card d-flex flex-row justify-content-between g-4 align-items-start p-4"
@@ -319,8 +370,7 @@
       </div>
     </div>
     <!-- end copyright -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="../js/wishlist.js" type="module"></script>
+    <script src="../js/contact.js"></script>
   </body>
 </html>

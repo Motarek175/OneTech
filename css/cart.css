@@ -277,7 +277,7 @@ header .nav {
 }
 
 .copyright p span {
-    font-size: 30px;
+  font-size: 30px;
   font-family: "Dancing Script", cursive;
   font-weight: 700;
   color: var(--main-color);

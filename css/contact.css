@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
 
 :root {
   --main-color: #09c;
@@ -42,7 +43,7 @@ li {
   text-align: center;
   place-content: center;
   cursor: pointer;
-  transform: scale(0);
+  transform: scale(1);
   transition: all 0.3s ease-in;
   transform-origin: bottom right;
   z-index: 10000;
@@ -55,96 +56,16 @@ li {
 /* end scroll to top */
 
 /* start header */
-/* main */
-header .main .container .row .logo a {
-  color: var(--main-color);
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
-header .main .container .row .search input,
-header .main .container .row .search .categories {
-  color: #828282;
-}
-
-header .main .container .row .search input {
-  padding: 6px 12px;
-}
-
-header .main .container .row .search .categories {
-  height: 100%;
-  top: 50%;
-  right: 15%;
-  transform: translateY(-50%);
-  border-left: 1px solid #828282;
-  padding-left: 10px;
-  cursor: pointer;
-}
-
-header .main .container .row .search .categories span {
-  padding-right: 5px;
-}
-
-header .main .container .row .search .btnSubmit {
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  transform: translateY(-50%);
-  height: 100%;
-  background: #09c;
-  border: none;
-  width: 50px;
-  border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
-  color: #fff;
-  transition: all 0.3s ease-in;
-}
-
-header .main .container .row .search .btnSubmit:hover {
-  background-color: var(--secondary-color);
-}
-
-header .main .container .row .icon .counter {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 40%;
-  right: -5px;
-  color: white;
-  font-weight: 600;
-  background-color: var(--main-color);
-}
-
-header .main .container .row .icon strong {
-  transition: 0.3s ease-in all;
-}
-
-header .main .container .row .icon strong {
-  color: black;
-}
-
-header .main .container .row .icon strong:hover {
-  color: var(--main-color);
-}
-
-header .main .container .row .icon small {
-  color: #828282;
-}
-
-@media (max-width: 480px) {
-  header .main .container .row .icon .whishlist {
-    margin-right: 0;
-  }
-}
-
-/* nav */
 header .nav {
   background-color: var(--main-color);
-}
-
-.nav .container {
-  position: sticky;
 }
 
 .nav .container .left {
@@ -260,6 +181,39 @@ header .nav {
 }
 /* end header */
 
+/* start info */
+.info .container .row .item {
+  border: solid 1px #e8e8e8;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 10%);
+  height: 100%;
+}
+
+.info .container .row .item small {
+  color: #828282;
+}
+/* end info */
+
+/* start contact */
+.contact input,
+.contact textarea,
+.contact button {
+  padding: var(--main-padding);
+}
+
+.contact button {
+  color: white;
+  font-weight: 600;
+  background-color: var(--secondary-color);
+  margin-top: 10px;
+}
+
+.contact button:hover {
+  color: white;
+  background-color: var(--main-color) !important;
+}
+
+/* end contact */
+
 /* start newsletter */
 .newsletter .card {
   box-shadow: 0px 8px 18px 2px #bbb;
@@ -330,6 +284,9 @@ header .nav {
 }
 
 .copyright p span {
+  font-size: 30px;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
   color: var(--main-color);
 }
 /* end copyright */
