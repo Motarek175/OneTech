@@ -33,13 +33,16 @@ li {
 .load {
   position: fixed;
   background-color: var(--main-color);
-  min-height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
-  opacity: 1;
+  z-index: 1;
+  opacity: 2;
+  transition: all 1s linear;
+  /* transform: scale(1);
+  transform-origin: bottom left; */
 }
 
 .loader {

@@ -1,3 +1,10 @@
+let loader = document.querySelector(".load");
+document.body.style.overflowY = "hidden";
+window.onload = setInterval(() => {
+  loader.style.cssText = "  opacity: 0; z-index:-1";
+  document.body.style.overflowY = "auto";
+}, 1000);
+
 // toggle menu + scroll to top
 var up = document.querySelector(".upp");
 // header variables

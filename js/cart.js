@@ -1,9 +1,11 @@
-// toggle menu + scroll to top
-let up = document.querySelector(".upp");
-// header variables
-let nav = document.querySelector(".nav");
-let menu = document.querySelector(".right .con .menu");
-let togglemenu = document.querySelector(".nav .toggleMenu");
+let loader = document.querySelector(".load");
+
+document.body.style.overflowY = "hidden";
+window.onload = setInterval(() => {
+  loader.style.cssText = "  opacity: 0; z-index:-1";
+  document.body.style.overflowY = "auto";
+}, 1000);
+
 // details variables
 let details = [];
 let empty = document.querySelector(".empty");
@@ -24,6 +26,14 @@ let surecon = document.querySelector(".sure .con");
 let sureX = document.querySelector(".sure .con .header i");
 let sureNot = document.querySelector(".sure .con .buttons .no");
 let sureYes = document.querySelector(".sure .con .buttons .yes");
+// scroll to top
+
+// toggle menu + scroll to top
+var up = document.querySelector(".upp");
+// header variables
+var nav = document.querySelector(".nav");
+var menu = document.querySelector(".right .con .menu");
+var togglemenu = document.querySelector(".nav .toggleMenu");
 // scroll to top
 up.addEventListener("click", () => {
   window.scrollTo(0, 0);

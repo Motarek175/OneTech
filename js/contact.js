@@ -1,3 +1,10 @@
+let loader = document.querySelector(".load");
+document.body.style.overflowY = "hidden";
+window.onload = setInterval(() => {
+  loader.style.cssText = "  opacity: 0; z-index:-1";
+  document.body.style.overflowY = "auto";
+}, 1000);
+
 var up = document.querySelector(".upp");
 up.addEventListener("click", () => {
   window.scrollTo(0, 0);
@@ -12,9 +19,7 @@ menu.addEventListener("click", () => {
 });
 
 window.onscroll = function () {
-  if (window.scrollY > 113) {
-    nav.style.cssText =
-      "position: fixed; top:0; left:0; width:100%; z-index:1000";
+  if (window.scrollY > 50) {
     up.style.transform = "scale(1)";
   } else {
     nav.style.cssText = "position: relative;";

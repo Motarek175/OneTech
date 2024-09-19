@@ -1,29 +1,28 @@
-// loader
 let loader = document.querySelector(".load");
+let nav = document.querySelector(".nav");
+let menu = document.querySelector(".right .con .menu");
+let togglemenu = document.querySelector(".nav .toggleMenu");
+let up = document.querySelector(".upp");
+
 document.body.style.overflowY = "hidden";
 window.onload = setInterval(() => {
-  loader.style.cssText = " opacity:0; transition: all 1s linear; z-index:-1";
+  loader.style.cssText = "  opacity: 0; z-index:-1";
   document.body.style.overflowY = "auto";
 }, 1000);
 
 // toggle menu + scroll to top
-var up = document.querySelector(".upp");
 up.addEventListener("click", () => {
   window.scrollTo(0, 0);
 });
 
-var nav = document.querySelector(".nav");
-var menu = document.querySelector(".right .con .menu");
-var togglemenu = document.querySelector(".nav .toggleMenu");
 menu.addEventListener("click", () => {
   togglemenu.classList.toggle("active");
-  togglemenu.style.cssText = "z-index:1111111";
+  togglemenu.style.cssText = "z-index:1";
 });
 
 window.onscroll = function () {
   if (window.scrollY > 113) {
-    nav.style.cssText =
-      "position: fixed; top:0; left:0; width:100%; z-index:1000";
+    nav.style.cssText = "position: fixed; top:0; left:0; width:100%; z-index:1";
     up.style.transform = "scale(1)";
   } else {
     nav.style.cssText = "position: relative;";
