@@ -2,7 +2,7 @@
 let loader = document.querySelector(".load");
 document.body.style.overflowY = "hidden";
 window.onload = setInterval(() => {
-  loader.style.cssText = " opacity:0; transition: all 1s linear; z-index:0";
+  loader.style.cssText = " opacity:0; transition: all 1s linear; z-index:-1";
   document.body.style.overflowY = "auto";
 }, 1000);
 
