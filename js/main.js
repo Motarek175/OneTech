@@ -362,7 +362,7 @@ heartbuttons.forEach((heart) => {
         wishcounter = 0;
       }
       let heartindex = favcontainer.findIndex(
-        (item) => item.favname === wish.querySelector(".text a")?.textContent
+                (item) => item.favname === wish.querySelector("strong")?.textContent
       );
       if (heartindex !== -1) {
         favcontainer.splice(heartindex, 1);
