@@ -204,9 +204,18 @@ let cartprice = 0;
 let card;
 let cardContainer = JSON.parse(localStorage.getItem("Details")) || [];
 let buttons = document.querySelectorAll(".testbutton");
+let heartbuttons = document.querySelectorAll(".heartbutton");
 let testheart = document.querySelectorAll(".testheart");
 let btnState = [];
 let heartState = [];
+// add and remove from wishlist
+let wishcounter = localStorage.getItem("wishcounter")
+  ? JSON.parse(localStorage.getItem("wishcounter"))
+  : 0;
+let favcontainer = localStorage.getItem("wish")
+  ? JSON.parse(localStorage.getItem("wish"))
+  : [];
+whishlist.innerHTML = wishcounter;
 
 // add and remove from cart
 window.onload = function () {
@@ -239,6 +248,17 @@ function updateButtonState(button) {
   } else {
     button.classList.remove("active");
     button.innerHTML = "Add Cart";
+  }
+}
+
+function updateHeartState(heart) {
+  let heartstate = JSON.parse(localStorage.getItem("heartState")) || [];
+  if (heartstate.includes(heart.id)) {
+    heart.classList.add("active");
+    heart.style.cssText = "color:red; transition: all 0.3s ease-in-out";
+  } else {
+    heart.classList.remove("active");
+    heart.style.cssText = "color:black; transition: all 0.3s ease-in-out";
   }
 }
 
@@ -303,28 +323,56 @@ buttons.forEach((btn) => {
   });
 });
 
-// add and remove from wishlist
-// Initialize wishcounter and favcontainer from localStorage
-let wishcounter = localStorage.getItem("wishcounter")
-  ? JSON.parse(localStorage.getItem("wishcounter"))
-  : 0;
-
-let favcontainer = localStorage.getItem("wish")
-  ? JSON.parse(localStorage.getItem("wish"))
-  : [];
-whishlist.innerHTML = wishcounter;
-
-function updateHeartState(heart) {
-  // const stat = localStorage.getItem(`heart-${heart.id}`);
-  let heartstate = JSON.parse(localStorage.getItem("heartState")) || [];
-  if (heartstate.includes(heart.id)) {
-    heart.classList.add("active");
-    heart.style.cssText = "color:red; transition: all 0.3s ease-in-out";
-  } else {
-    heart.classList.remove("active");
-    heart.style.cssText = "color:black; transition: all 0.3s ease-in-out";
-  }
-}
+heartbuttons.forEach((heart) => {
+  updateHeartState(heart);
+  heart.addEventListener("click", () => {
+    heart.classList.toggle("active");
+    heartState = JSON.parse(localStorage.getItem("heartState")) || [];
+    let wish = heart.parentNode;
+    console.log(wish);
+    if (heart.classList.contains("active")) {
+      localStorage.setItem(`heart-${heart.id}`, "1");
+      if (!heartState.includes(`${heart.id}`)) {
+        heartState.push(heart.id);
+      }
+      heart.style.cssText = "color:red";
+      // Add to wishlist
+      wishcounter++;
+      whishlist.innerHTML = wishcounter;
+      localStorage.setItem("wishcounter", wishcounter);
+      let details = {
+        favimg: wish.querySelector("img")?.src,
+        favprice: wish.querySelector("small:nth-of-type(1)")?.textContent,
+        favtype: wish.querySelector("small:nth-of-type(2)")?.textContent,
+        favname: wish.querySelector("strong")?.textContent,
+        favid: wish.querySelector(".heartbutton").id,
+      };
+      favcontainer.push(details);
+      localStorage.setItem("wish", JSON.stringify(favcontainer));
+      localStorage.setItem("heartState", JSON.stringify(heartState));
+    } else {
+      localStorage.setItem(`heart-${heart.id}`, "0");
+      heart.style.cssText = "color:black";
+      // Remove from wishlist
+      let stateIndex = heartState.indexOf(heart.id);
+      heartState.splice(stateIndex, 1);
+      localStorage.setItem("heartState", JSON.stringify(heartState));
+      wishcounter--;
+      if (wishcounter <= 0) {
+        wishcounter = 0;
+      }
+      let heartindex = favcontainer.findIndex(
+        (item) => item.favname === wish.querySelector(".text a")?.textContent
+      );
+      if (heartindex !== -1) {
+        favcontainer.splice(heartindex, 1);
+      }
+      localStorage.setItem("wish", JSON.stringify(favcontainer));
+      whishlist.innerHTML = wishcounter;
+      localStorage.setItem("wishcounter", wishcounter);
+    }
+  });
+});
 
 testheart.forEach((heart) => {
   updateHeartState(heart);
@@ -343,8 +391,8 @@ testheart.forEach((heart) => {
       whishlist.innerHTML = wishcounter;
       localStorage.setItem("wishcounter", wishcounter);
       let details = {
-        favimg: wish.querySelector(".image img")?.src,
-        favprice: wish.querySelector(".text p")?.textContent,
+        favimg: wish.querySelector("img")?.src,
+        favprice: wish.querySelector("p")?.textContent,
         favtype: wish.querySelector(".text small")?.textContent,
         favname: wish.querySelector(".text a")?.textContent,
         favid: wish.querySelector(".testheart").id,

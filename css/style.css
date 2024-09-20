@@ -748,7 +748,7 @@ header .nav {
   position: absolute;
 }
 
-.bestSeller .container .item .heart {
+.heart {
   width: fit-content;
   right: 25px;
   top: 10px;
@@ -764,7 +764,7 @@ header .nav {
   transition: all 0.3s ease-in-out;
 }
 
-.bestSeller .container .item .heart i {
+.heart i {
   font-size: 16px;
 }
 
