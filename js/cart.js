@@ -79,7 +79,7 @@ function display() {
     let price = parseFloat(itemprice);
     pros += `<div class="row py-3 justify-content-center align-items-center" data-index="${i}">
           <div class="col-4 d-flex gap-2 align-items-center">
-            <img src="${details[i].cardimg}" alt="">
+            <img src="${details[i].cardimg}" alt="" class = "w-50">
             <div class="text">
               <h5>${details[i].cardname}</h5>
               <p class="text-secondary">${details[i].cardtype}</p>

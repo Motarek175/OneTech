@@ -100,6 +100,7 @@ li {
 
 /* start header */
 /* main */
+
 header .main .container .row .logo a {
   color: var(--main-color);
 }
@@ -378,6 +379,7 @@ header .nav {
 /* start deal */
 .deal .container .row .left {
   box-shadow: 0 0 12px 1px #0000001b;
+  height: fit-content;
 }
 .progress-bar {
   background-color: #0d6efd;
@@ -403,6 +405,11 @@ header .nav {
 
 .deal .container .row .right .items .content .active {
   display: flex;
+}
+
+.deal .container .row .right .items .content .item {
+  height: fit-content;
+  text-align: center;
 }
 
 .deal .container .row .right .head button {
@@ -578,6 +585,13 @@ header .nav {
   transition: all 0.3s ease-in-out;
 }
 
+.newArrival .container .row .left .feature .item,
+.newArrival .container .row .left .onsal .item,
+.newArrival .container .row .left .best .item {
+  height: fit-content;
+  text-align: center;
+}
+
 .newArrival .container .row .left .active {
   display: flex;
 }
@@ -717,6 +731,13 @@ header .nav {
 
 .bestSeller .container .row .item {
   background-color: #fff !important;
+  height: 200px;
+  overflow: hidden;
+}
+
+.bestSeller .container .row .item img {
+  width: 100px;
+  height: 150px;
 }
 
 .bestSeller .container .item a {

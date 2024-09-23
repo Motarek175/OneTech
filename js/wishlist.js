@@ -42,7 +42,7 @@ if (wish != "") {
       i + 1
     }" class="row pt-3 justify-content-center align-items-center" data-index="${i}">
           <div class="col-4 d-flex gap-2 align-items-center">
-            <img src="${details[i].favimg}" alt="">
+            <img src="${details[i].favimg}" alt="" class = "w-50">
             <div class="text">
               <h5>${details[i].favname}</h5>
               <small class="text-secondary">${details[i].favtype}</small>
