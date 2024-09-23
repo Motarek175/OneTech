@@ -43,7 +43,7 @@ async function login(info) {
       title: "Login Successful",
       text: `Welcome!`,
     }).then(() => {
-      window.location.href = "../home/home.html";
+      window.location.href = "home/home.html";
     });
   }
 }
