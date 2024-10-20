@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Sign In</title>
+  </head>
+  <body>
+    <div class="load">
+      <div class="loader"></div>
+    </div>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">
+            <a href="">E-Commerce</a>
+          </div>
+          <div class="otherLinks">
+            <ul>
+              <li><a class="signin">Sign In</a></li>
+              <li><a class="signup">Sign Up</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <section>
+      <div
+        class="container d-flex justify-content-around gap-5 position-relative"
+      >
+        <div class="overlay"></div>
+        <div class="left">
+          <h2>Sign In</h2>
+          <input
+            class="form-control"
+            id="email"
+            type="email"
+            placeholder="Enter Your Email..."
+          />
+          <input
+            class="form-control"
+            id="pass"
+            type="password"
+            placeholder="Enter Your Password..."
+          />
+          <button type="submit">Sign In</button>
+          <p>Don't have an account ?? <span>Sign Up</span></p>
+        </div>
+        <div class="right">
+          <h2>Sign Up</h2>
+          <input
+            class="form-control"
+            id="username"
+            type="text"
+            placeholder="Username..."
+          />
+          <input
+            class="form-control"
+            id="emaill"
+            type="email"
+            placeholder="Email..."
+          />
+          <input
+            class="form-control"
+            id="password"
+            type="password"
+            placeholder="Password..."
+          />
+          <input
+            class="form-control"
+            id="confPass"
+            type="password"
+            placeholder="Confirm Password..."
+          />
+          <input
+            class="form-control"
+            id="tele"
+            type="tel"
+            placeholder="Phone Number..."
+          />
+          <button type="submit">Sign Up</button>
+          <p>Have an account ?? <span>Sign In</span></p>
+        </div>
+      </div>
+    </section>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <!-- <script src="../js/main.js"></script> -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>
