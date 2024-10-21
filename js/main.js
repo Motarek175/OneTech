@@ -72,7 +72,7 @@ async function signup(data) {
   if (result.message === "success") {
     Swal.fire({
       icon: "success",
-      title: "Login Successful",
+      title: "SignUp Successful",
       text: `Please Login!`,
     }).then(() => {
       window.location.href = "../index.html";
